@@ -1,0 +1,343 @@
+<!DOCTYPE>
+<html>
+  <head>
+     
+  <Title>Rock Paper Scisors</Title>
+
+  </head>
+  <body>
+      <div id='rezwl'>Ready?</div>
+     
+      
+<h1 id='Welcome'>Welcome to the Game</h1>
+<div id='scoreTracker'>
+  <div id='playerTable'>Player Score
+    <span id='playerPoints'>0</span>
+  </div>
+  <div id='rounds'>Round
+    <span id='nmrounds'>0</span>
+    
+  </div>
+  <div id='compTable'>Computer Score
+    <span id='compPoints'>0</span>
+  </div>
+</div>
+<div id='Choices'>
+  <span id='playerPick'>Play a sign</span>
+  <span id='compPick'>Computer's sigh</span>
+</div>
+<div id='container'>
+  <button id='ROCK'>Rock</button>
+  <button id='PAPER'>Paper</button>
+  <button id='SCISORS'>Scisors</button>
+</div>
+    </div>
+        </body>
+<script>
+  const plrpck=document.querySelector('#playerPick')
+  const cmppck=document.querySelector('#compPick')
+  const rnds=document.querySelector('#nmrounds')
+  const plscr=document.querySelector('#playerPoints')
+  const cmpscr=document.querySelector('#compPoints')
+ 
+
+
+  let rounds=0;
+  let compScore=0;
+  let playerScore=0;
+  let rock='ROCK'
+  let paper='PAPER'
+  let scisors='SCISORS'
+  let playerChoice=0
+  let draw=3
+  let win=5
+  let lose=4
+
+  const btn1 = document.querySelector('#ROCK');
+btn1.onclick = () =>  pRock();
+const btn2 = document.querySelector('#PAPER');
+btn2.onclick = () => pPaper();
+const btn3 = document.querySelector('#SCISORS');
+btn3.onclick = () => pScisors();
+
+
+  
+
+  function shrink(){
+  const selection=document.getElementById('playerPick')
+  selection.style.width='100px'
+  selection.style.backgroundColor='transparent'
+  selection.style.height='100px'
+  selection.style.borderRadius='50%'
+  }
+
+function rew(){
+  const selection=document.getElementById('playerPick')
+  selection.style.width='120px'
+  selection.style.backgroundColor='gold'
+  selection.style.height='120px'
+  selection.style.borderRadius='50%'
+  selection.style.padding='5px'
+  setTimeout(function(){shrink();},500)
+}
+function shrinkCP(){
+  const selection=document.getElementById('compPick')
+  selection.style.width='100px'
+  selection.style.backgroundColor='transparent'
+  selection.style.height='100px'
+  selection.style.borderRadius='50%'
+  }
+
+function rewCP(){
+  const selection=document.getElementById('compPick')
+  selection.style.width='120px'
+  selection.style.backgroundColor='red'
+  selection.style.height='120px'
+  selection.style.borderRadius='50%'
+  selection.style.padding='5px'
+  setTimeout(function(){shrinkCP();},500)
+}
+
+function playa1() {
+  var audio = new Audio('./media/kick.wav');
+  audio.play();
+}
+function playa2() {
+  var audio = new Audio('./media/tom.wav');
+  audio.play();}
+
+  function playa3() {
+  var audio = new Audio('./media/hihat.wav');
+  audio.play();}
+
+function computerPlay (){
+        let coe=Math.random();
+    if (coe>0.67) {
+cmppck.innerHTML='<img src="./media/LogoPaper.png">'
+      return paper ;
+       } else if (coe>0.33 && coe<0.67 ) {
+        cmppck.innerHTML='<img src="./media/LogoRock.png">';
+         return rock ;} else {
+           cmppck.innerHTML='<img src="./media/LogoScisors.png">'
+           return scisors ;}
+              }
+              
+
+  function pRock(){
+    let compChoice=computerPlay();
+    rounds++
+      rnds.textContent=rounds;
+      playa1();
+      rew();
+      rewCP()
+      plrpck.innerHTML = '<img src="./media/LogoRock.png">';
+    if (compChoice==scisors){
+      playerScore++
+      plscr.textContent=playerScore
+      rezwl.textContent='You Win!'
+      return win;
+    } else if (compChoice==paper){     
+      compScore++
+      cmpscr.textContent=compScore;
+      rezwl.textContent='You Lose!'
+      return lose;     
+    } else {   
+      rezwl.textContent='Draw! Try Again!'
+      return draw
+    }
+  }
+
+  function pScisors(){
+    rounds++
+      rnds.textContent=rounds;
+      playa2()
+      rew();
+      rewCP()
+    let compChoice=computerPlay();
+    plrpck.innerHTML = '<img src="./media/LogoScisors.png">';
+    if (compChoice==paper){
+      playerScore++
+      plscr.textContent=playerScore
+      rezwl.textContent='You Win!'
+      return win;
+    } else if (compChoice==rock){
+      compScore++
+      cmpscr.textContent=compScore;
+      rezwl.textContent='You Lose!'
+      return lose;
+    } else {
+      rezwl.textContent='Draw! Try Again!'
+      return draw
+    }
+  }
+  function pPaper(){
+    rounds++
+      rnds.textContent=rounds;
+      playa3()
+      rew();
+      rewCP()
+    let compChoice=computerPlay();
+    plrpck.innerHTML = '<img src="./media/LogoPaper.png">';
+    if (compChoice==rock){
+      playerScore++
+      plscr.textContent=playerScore
+      rezwl.textContent='You Win!'
+      return win;
+    } else if (compChoice==scisors){
+      compScore++
+      cmpscr.textContent=compScore;
+      rezwl.textContent='You Lose!'
+      return lose;
+    } else {     
+      rezwl.textContent='Draw! Try Again!'
+      return draw
+    }
+  }
+  window.addEventListener("keydown", event => {
+    if (event.key == "v") {
+      document.body.style.backgroundColor = "violet";
+    }
+  });
+  window.addEventListener("keyup", event => {
+    if (event.key == "v") {
+      document.body.style.backgroundColor = "";
+    }
+  });
+
+  </script>
+  <style>
+  .dot {
+    height: 8px; width: 8px;
+    border-radius: 4px; /* rounds corners */
+    background: purple;
+    position: absolute;
+  }
+    html{
+      background-size: cover;
+      background-image: url(media/backgrnd.jpg);
+
+    }
+    
+    #Welcome{
+      color: black;
+      border-radius: 100px;
+background-color: rgb(229,78,78);
+font-family:Time-New-Roman;
+font-size:60px;
+text-align: center;
+
+    }
+    #container{
+  
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      position: relative;top:300px
+       }
+       button{
+         color: black;
+         width:100px;
+         height:50px;
+         background-color: rgb(229,78,78);
+         border-style: solid;
+         border-color: thistle;
+         border-width: 5px;
+         border-radius: 50%;
+         
+         transition: border-color, border-width .2s;
+       }
+       button:hover{
+         border-color:orange;
+         border-width:8px;
+       }
+       #scoreTracker{
+         font-size: 30px;
+         font-weight: bold;
+         color: black;
+         display: flex;
+         justify-content: space-evenly;
+         border-style: ridge;
+         border-radius: 40%;
+         border-width: 5px;
+         border-color: rgb(229,78,78);
+         background-color: pink;
+       }
+       #Choices{
+         display: flex;
+         justify-content: space-evenly;
+         position: relative;
+         top:250px;
+         left:25vw;
+         width:50%;
+         height:120px;
+         border-style:solid;
+         border-radius:20px;
+         border-width:5px;
+         border-color:rgb(229,78,78) ;
+         background-color: pink;
+       }
+       #playerPoints{
+         position: relative;
+         top:150px;
+         right:97px;
+         padding:30px;
+         font-size: 60px;
+         border-style: solid;
+         border-width: 10px;
+         border-color: rgb(229,78,78);
+         border-radius: 25%;
+         background-color: pink;
+       }
+       #compPoints{
+        position: relative;
+         top:150px;
+         right:97px;
+         padding:30px;
+         font-size: 60px;
+         border-style: solid;
+         border-width: 10px;
+         border-color: rgb(229,78,78);
+         border-radius: 25%;
+         background-color: pink;
+       }
+       #playerPick{
+         width: 100px;
+         height: 100px;
+         
+         
+       }
+       
+       #playerPick img{
+         width: 100%;
+         height: auto;
+         
+       }
+       #compPick{
+         width: 100px;
+         height: 100px;
+         
+       }
+       #compPick img{
+        width: 100%;
+         height: auto;
+         
+       }
+       #rezwl{
+         position:relative;
+         top: 400px;
+         left:47vw;
+         background-color: pink;
+         width:40px;
+         border-style: solid;
+         border-radius: 30%;
+         border-color: rgb(229,78,78);
+         border: width 5px;
+         padding: 20px;
+         text-align: center;
+       }
+       
+  </style>
+  
+
+</html>
