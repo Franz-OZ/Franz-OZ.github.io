@@ -99,26 +99,26 @@ function rewCP(){
 }
 
 function playa1() {
-  var audio = new Audio('./media/kick.wav');
+  var audio = new Audio('./kick.wav');
   audio.play();
 }
 function playa2() {
-  var audio = new Audio('./media/tom.wav');
+  var audio = new Audio('./tom.wav');
   audio.play();}
 
   function playa3() {
-  var audio = new Audio('./media/hihat.wav');
+  var audio = new Audio('./hihat.wav');
   audio.play();}
 
 function computerPlay (){
         let coe=Math.random();
     if (coe>0.67) {
-cmppck.innerHTML='<img src="./media/LogoPaper.png">'
+cmppck.innerHTML='<img src="./LogoPaper.png">'
       return paper ;
        } else if (coe>0.33 && coe<0.67 ) {
-        cmppck.innerHTML='<img src="./media/LogoRock.png">';
+        cmppck.innerHTML='<img src="./LogoRock.png">';
          return rock ;} else {
-           cmppck.innerHTML='<img src="./media/LogoScisors.png">'
+           cmppck.innerHTML='<img src="./LogoScisors.png">'
            return scisors ;}
               }
               
@@ -130,7 +130,7 @@ cmppck.innerHTML='<img src="./media/LogoPaper.png">'
       playa1();
       rew();
       rewCP()
-      plrpck.innerHTML = '<img src="./media/LogoRock.png">';
+      plrpck.innerHTML = '<img src="./LogoRock.png">';
     if (compChoice==scisors){
       playerScore++
       plscr.textContent=playerScore
@@ -154,7 +154,7 @@ cmppck.innerHTML='<img src="./media/LogoPaper.png">'
       rew();
       rewCP()
     let compChoice=computerPlay();
-    plrpck.innerHTML = '<img src="./media/LogoScisors.png">';
+    plrpck.innerHTML = '<img src="./LogoScisors.png">';
     if (compChoice==paper){
       playerScore++
       plscr.textContent=playerScore
@@ -177,7 +177,7 @@ cmppck.innerHTML='<img src="./media/LogoPaper.png">'
       rew();
       rewCP()
     let compChoice=computerPlay();
-    plrpck.innerHTML = '<img src="./media/LogoPaper.png">';
+    plrpck.innerHTML = '<img src="./LogoPaper.png">';
     if (compChoice==rock){
       playerScore++
       plscr.textContent=playerScore
@@ -214,7 +214,7 @@ cmppck.innerHTML='<img src="./media/LogoPaper.png">'
   }
     html{
       background-size: cover;
-      background-image: url(media/backgrnd.jpg);
+      background-image: url(backgrnd.jpg);
 
     }
     
